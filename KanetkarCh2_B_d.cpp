@@ -12,7 +12,7 @@ int main() {
         cout <<"Nested local scope 1 i: : "<<i<<endl<<"Global i : "<<::i<<endl;
         cout << "Nested local scope 1 i address : " << &i << endl<<"Global i address : " <<&::i<<endl;
     }
-    // The curcle brackets block represents the nested scope which is enclosed by the local main() scope. THe global enviornment
+    // The curvy brackets block represents the nested scope which is enclosed by the local main() scope. THe global enviornment
     // encompasses both these scopes
     cout << i;
     return 0; 
