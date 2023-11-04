@@ -19,7 +19,7 @@ using namespace std;
 
 class BankAccount {
     private:
-        int accountNumber;
+        long long int accountNumber;
         double accountBalance;
         string accountHolder;
 
@@ -32,19 +32,19 @@ class BankAccount {
             this->accountHolder = acc_holder_name;
             totalAccounts++;
             }
-        void depositAmount(int amt);
-        void withdrawAmount(int amt);
+        void depositAmount(double amt);
+        void withdrawAmount(double amt);
         double checkBalance(void);
         void displayDetails(void);
 };
 
 int BankAccount::totalAccounts = 0;
 
-void BankAccount :: depositAmount(int amt){
+void BankAccount :: depositAmount(double amt){
     accountBalance += amt;
     cout << "Successfully deposited " << amt << " rupees in account #" << accountNumber << endl;
 }
-void BankAccount :: withdrawAmount(int amt){
+void BankAccount :: withdrawAmount(double amt){
     accountBalance -= amt;
     cout << "Successfully withdrew " << amt << " rupees from account #" << accountNumber << endl;
 }
@@ -59,9 +59,9 @@ void BankAccount :: displayDetails() {
 
 
 int main() {
-    BankAccount account1(459939300395, "Alex", 2500);
-    BankAccount account2(324353556666, "John", 3450);
-    BankAccount account3(235235644666, "Fred", 10000);
+    BankAccount account1(4599393, "Alex", 2500.0);
+    BankAccount account2(3243535, "John", 3450.0);
+    BankAccount account3(2352356, "Fred", 10000.0);
 
     account1.withdrawAmount(340);
     account1.displayDetails();
