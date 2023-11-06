@@ -9,18 +9,19 @@ void print(int *ar){
 }
 
 int* print(void){
-    int*p = (int*) malloc(10*sizeof(int));
+    int*p = (int*) malloc(11*sizeof(int));
     for(int i = 0; i < 10; i++){
-        p[i] = i+1;
-    }
+        *(p+i) = i+1;
     return p;
+    }
 }
 void printarray(int** s){
-    for(int y = 0; y <10; y++){
-        cout << *s[y] <<endl;
+    while(**s != 9){
+        cout << endl;
+        cout << *s << endl;
+        s++;
     }
 }
-
 int main() {
     int* ptrarr[12];
     int * heapptr;
@@ -30,6 +31,5 @@ int main() {
         heapptr++;
     }
     printarray(ptrarr);
-    free(heapptr);
     return 0;
 }
