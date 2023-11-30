@@ -49,7 +49,7 @@ int main() {
     s1.set_last_name(lname);
     s1.set_age(age);
     s1.set_standard(stnd);
-    string name_result = s1.get_last_name() + "," + s1.get_first_name();
+    string name_result = s1.get_last_name() + ", " + s1.get_first_name();
     cout << s1.get_age() << endl;
     cout << name_result << endl;
     cout << s1.get_standard() << endl <<endl;

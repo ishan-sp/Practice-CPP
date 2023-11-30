@@ -10,10 +10,13 @@ void print(int *ar){
 
 int* print(void){
     int*p = (int*) malloc(10*sizeof(int));
+    int* z = p;
     for(int i = 0; i < 10; i++){
-        p[i] = i+1;
+        *p = i+1;
+        p++;
+        //p[i] = i+1;
     }
-    return p;
+    return z;
 }
 void printarray(int** s){
     for(int y = 0; y <10; y++){
