@@ -1,25 +1,22 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 class Density {
-    private:
-        double river, land, thresh, pop, area, den;
     public:
-        Density(double r, double l, double p, double a) {
-            river = r;
-            land = l;
-            thresh = r/l;
-            pop = p;
-            area = a;
+        double den, population, area;
+        double thresh, riverArea, landArea;
+    public:
+        Density(double p, double a, double r, double l) : population{p}, area{a}, riverArea{r}, landArea{l} {
             den = p/a;
+            thresh = r/p;
         }
-        friend class th;
 };
 
-class th {
+class Threshold : public Density {
     public:
-    th(double r, double l, double p, double a) : Density(r, l, p, a) {}
-        check() {
+        Threshold(int p, int a, int r, int l) : Density(p, a, r, l) {}
+        void check() {
             double temp = abs(thresh- den);
             if (thresh > den) {
                 cout << "Population in the region exceeds the threshold by " << temp*population << endl;
@@ -34,8 +31,8 @@ class th {
 };
 
 int main() {
-    th t(5000, 600, 10, 15);
-    t.check();
+    Threshold t1(5000, 4000, 60, 50);
+    t1.check();
 
     return 0;
 }
