@@ -13,27 +13,17 @@ class Node {
 
 void addHead(Node* &head, string d) {
     Node* temp = new Node(d);
-    if (head != nullptr) {
-        temp->next = head;
-        head->prev = temp;
-        head = temp;
-    } else {
-        head = temp;
-    }
+    temp->next = head;
+    head->prev = temp;
+    head = temp;
+    head->prev = NULL;
 }
-void addTail(Node* &head, string d) {
+void addTail(Node* &tail, string d) {
     Node* temp = new Node(d);
-    Node* t = head;
-    if (head != nullptr) {
-        while(t->next != nullptr) {
-            t = t->next
-        }
-        t->next = temp;
-        temp->next = NULL;
-        temp->prev = t;
-    } else {
-        head = temp;
-    }
+    tail->next = temp;
+    temp->prev = tail;
+    tail = temp;
+    temp->next = NULL;
 }
 void addPos(Node* &head, int pos, string d) {
     Node* temp = new Node(d);
@@ -86,8 +76,9 @@ void del(Node* &head, int pos) {
 
 int main() {
     string choice;
-    Node* node1 = nullptr;
+    Node* node1 = new Node("");
     Node* head = node1;
+    Node* tail = node1;
     while(true) {
         cout << endl;
         cout<<"[A] Add a task at highest priority\t[B] Add a task at least priority\n[C] Display tasks\t\t\t[D] Delete a task\n[E] Edit a task\t\t\t\t[F] Find a task\n[G] Change priority\t\t\t[H] Exit" << endl;
@@ -112,7 +103,7 @@ int main() {
                 string temp;
                 cout << "Enter your string : ";
                 getline(cin, temp);
-                addTail(head, temp); }
+                addTail(tail, temp); }
             catch(...) {
                 cerr << "Sorry the addition at least priority could'nt be completed" << endl;
             }

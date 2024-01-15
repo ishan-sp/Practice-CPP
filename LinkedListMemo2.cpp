@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
+#include<sstream>
 #include<limits>
+#include<vector>
 using namespace std;
 
 class Node {
@@ -26,7 +28,7 @@ void addTail(Node* &head, string d) {
     Node* t = head;
     if (head != nullptr) {
         while(t->next != nullptr) {
-            t = t->next
+            t = t->next;
         }
         t->next = temp;
         temp->next = NULL;
@@ -83,7 +85,39 @@ void del(Node* &head, int pos) {
     }
 }
 
+void editf(Node* &head, string d, int pos) {
+    if (pos == 1) {
+        head->data = d;
+    } 
+    else {
+        Node* temp = head;
+        for (int i = 0; i <= pos - 2; i++) {
+            temp = temp->next;
+        }
+        temp->data = d;
+    }
+}
 
+void checkTask(Node* &head, string d) {
+    Node* temp = head;
+    bool found = false;
+    cout << endl << "The tasks that were found containing the word " << d <<" are : " << endl;
+    while(temp->next != NULL) {
+        istringstream iss(temp->data);
+        string word;
+
+        while (iss >> word) {
+            if(word == d) {
+                cout << temp->data;
+                found = true;
+            }
+        }
+        temp = temp-> next;
+    }
+    if(found == false) {
+        cout << "None";
+    }
+}
 int main() {
     string choice;
     Node* node1 = nullptr;
@@ -139,7 +173,31 @@ int main() {
             del(head, task_number);
             
         }
+
+        else if(choice == "E") {
+            int num;
+            string edit;
+            try {
+                print(head);
+            }
+            catch(...) {
+                cerr << "Sorry your display operation could'nt be completed"<< endl;
+            }
+            cout << "Enter string : ";
+            cin >> edit;
+            cout << endl << "Task position : ";
+            cin >> num;
+            editf(head, edit, num);
+        }
+        else if(choice == "F") { 
+            string word;
+            cout << "Search with the word : ";
+            cin >> word;
+            checkTask(head, word);
+        }
     }
+
+
 
     return 0;
 }
