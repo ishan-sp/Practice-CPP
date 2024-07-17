@@ -102,13 +102,13 @@ void checkTask(Node* &head, string d) {
     Node* temp = head;
     bool found = false;
     cout << endl << "The tasks that were found containing the word " << d <<" are : " << endl;
-    while(temp->next != NULL) {
+    while(temp != NULL) {
         istringstream iss(temp->data);
         string word;
 
         while (iss >> word) {
             if(word == d) {
-                cout << temp->data;
+                cout << temp->data << endl;
                 found = true;
             }
         }
@@ -124,11 +124,11 @@ int main() {
     Node* head = node1;
     while(true) {
         cout << endl;
-        cout<<"[A] Add a task at highest priority\t[B] Add a task at least priority\n[C] Display tasks\t\t\t[D] Delete a task\n[E] Edit a task\t\t\t\t[F] Find a task\n[G] Change priority\t\t\t[H] Exit" << endl;
+        cout<<"[A] Add a task at highest priority\t[B] Add a task at least priority\n[C] Display tasks\t\t\t[D] Delete a task\n[E] Edit a task\t\t\t\t[F] Find a task\n[G] Exit" << endl;
         cout << "Enter your choice : ";
         cin >> choice;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        if (choice == "H") {
+        if (choice == "G") {
             break;
         }
         else if(choice == "A" ) {
@@ -186,6 +186,7 @@ int main() {
             cout << "Enter string : ";
             cin >> edit;
             cout << endl << "Task position : ";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cin >> num;
             editf(head, edit, num);
         }
@@ -193,6 +194,7 @@ int main() {
             string word;
             cout << "Search with the word : ";
             cin >> word;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             checkTask(head, word);
         }
     }
